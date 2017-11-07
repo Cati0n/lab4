@@ -20,6 +20,15 @@ namespace lab4
             InitializeComponent();
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            groupBox1.Enabled = groupBox2.Enabled = groupBox3.Enabled = groupBox4.Enabled = false;
+            toolStripLabel1.Text = toolStripLabel2.Text = "__________";
+            toolStripSplitButton1.Enabled = false;
+            listBox1.Enabled = listBox2.Enabled = false;
+            listBox2.EnabledChanged += new EventHandler(listBox2_EnabledChanged);
+        }
+        
         public class matrix
         {
             public static int rang;
@@ -36,7 +45,7 @@ namespace lab4
                 Random elem = new Random();
                 for (int i = 0; i < rang; i ++)
                 {
-                    for (int j = 0; i< rang; j ++)
+                    for (int j = 0; j< rang; j ++)
                     {
                         mtr[i, j] = elem.Next(0, 10);
                     }
@@ -140,13 +149,15 @@ namespace lab4
             }
         }
 
+
+
         private void GenericA_Click(object sender, EventArgs e)
         {
             listBox1.Enabled = true;
             listBox1.Items.Clear();
 
             A = new matrix(matrix.rang);
-            string[] str_A = A.to_str(A.generic());
+           string[] str_A = A.to_str(A.generic());
 
             for (int i = 0; i < matrix.rang; i++)
                 listBox1.Items.Add(str_A[i]);
@@ -158,11 +169,29 @@ namespace lab4
             listBox2.Items.Clear();
 
             B = new matrix(matrix.rang);
-            string[] str_B = B.to_str(B.generic());
+            string [] str_B = B.to_str(B.generic());
 
             for (int i = 0; i < matrix.rang; i++)
                 listBox2.Items.Add(str_B[i]);
         }
+
+        private void listBox2_EnabledChanged(object sender, EventArgs e)
+        {
+            if (listBox1.Enabled == true && listBox2.Enabled == true)
+            {
+                groupBox1.Enabled = groupBox2.Enabled = groupBox3.Enabled = groupBox4.Enabled = true;
+                toolStripSplitButton1.Enabled = true;
+            }
+        }
+
+        //private void listBox_EnabledChanged(object sender, EventArgs e)
+        //{
+        //    if (listBox1.Enabled == true && listBox2.Enabled == true)
+        //    {
+        //        groupBox1.Enabled = groupBox2.Enabled = groupBox3.Enabled = groupBox4.Enabled = true;
+        //        toolStripSplitButton1.Enabled = true;
+        //    }
+        //}
 
         private void dubbleRow_Click(object sender, EventArgs e)
         {
@@ -211,21 +240,44 @@ namespace lab4
 
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-            groupBox1.Enabled = groupBox2.Enabled = groupBox3.Enabled = groupBox4.Enabled = false;
-            toolStripLabel1.Text = toolStripLabel2.Text = "__________";
-            toolStripSplitButton1.Enabled = false;
-            listBox1.Enabled = listBox2.Enabled = false;
+            //ind_matrix rowMatrixA = new ind_matrix();
+            //int rowA = (int)numericUpDown1.Value - 1;
+            //ind_matrix rowMatrixB = new ind_matrix();
+            //int rowB = (int)numericUpDown2.Value - 1;
+            //rowMatrixA.ind_matr = rowMatrixA.row_matr(A.mtr, rowA);
+            //rowMatrixB.ind_matr = rowMatrixB.row_matr(B.mtr, rowB);
+            //int sum;
+
+            //listBox3.Items.Add(sum);
+            ///////////////////////////////
+            //int indexA = A.mtr.GetLength(0);
+
+
+            int rowMatrixA = Convert.ToInt32(numericUpDown1.Value);
+            int rowMatrixB = Convert.ToInt32(numericUpDown2.Value);
+            int sum;
+            if ((rowMatrixA >= A.mtr.GetLength(0)) || (rowMatrixB >= B.mtr.GetLength(0)))
+            {
+                MessageBox.Show("Title");
+            }
+            else
+            {
+                for (int i = 0; i < (rowMatrixA+1); i++)
+                {
+                    sum = A.mtr[rowMatrixA, i] + B.mtr[rowMatrixB, i];
+                    listBox3.Items.Add(sum);
+                    
+                }
+                
+            }
+
         }
 
-        private void listBox_EnabledChanged(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            if (listBox1.Enabled == true && listBox2.Enabled == true)
-            {
-                groupBox1.Enabled = groupBox2.Enabled = groupBox3.Enabled = groupBox4.Enabled = true;
-                toolStripSplitButton1.Enabled = true;
-            }
+            listBox3.Items.Clear();
         }
     }
 }

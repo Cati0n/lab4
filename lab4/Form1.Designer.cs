@@ -232,6 +232,7 @@
             this.button2.TabIndex = 7;
             this.button2.Text = "Start sum";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -241,6 +242,7 @@
             this.button1.TabIndex = 6;
             this.button1.Text = "Clean the result";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label6
             // 
@@ -487,7 +489,7 @@
             // dubbleRow
             // 
             this.dubbleRow.Name = "dubbleRow";
-            this.dubbleRow.Size = new System.Drawing.Size(152, 22);
+            this.dubbleRow.Size = new System.Drawing.Size(140, 22);
             this.dubbleRow.Text = "Dubble rows";
             this.dubbleRow.Click += new System.EventHandler(this.dubbleRow_Click);
             // 
