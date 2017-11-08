@@ -91,6 +91,15 @@ namespace lab4
                 return MX;
             }
 
+            public static ind_matrix operator --(ind_matrix MX)
+            {
+                for (int i = 0; i < matrix.rang; i++)
+                {
+                    MX.ind_matr[i] -= MX.ind_matr[i];
+                }
+                return MX;
+            }
+
             public static bool operator ==(ind_matrix MX1, ind_matrix MX2)
             {
                 for (int i =0; i<matrix.rang; i ++)
@@ -105,6 +114,7 @@ namespace lab4
             {
                 return !(MX1 == MX2);
             }
+            
 
             public override bool Equals(object obj)
             {
@@ -270,9 +280,7 @@ namespace lab4
                     listBox3.Items.Add(sum);
                     
                 }
-                
             }
-
         }
 
         private void button1_Click(object sender, EventArgs e)
