@@ -226,28 +226,26 @@ namespace lab4
 
         private void button5_Click(object sender, EventArgs e)
         {
-            int row = (int)numericUpDown6.Value - 1;
-            ind_matrix IM = new ind_matrix();
-            IM.ind_matr = IM.row_matr(A.mtr, row);
-            IM++;
-            string s = "";
-            for (int i = 0; i < matrix.rang; i++)
-                s += IM.ind_matr[i] + " ";
+            var row = (int)numericUpDown6.Value - 1;
+            var im = new ind_matrix();
+            im.ind_matr = im.row_matr(A.mtr, row);
+            im++;
+            var s = "";
+            for (var i = 0; i < matrix.rang; i++)
+                s += im.ind_matr[i] + " ";
             textBox2.Text = s;
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            ind_matrix row_matrA = new ind_matrix();
-            int rowA = (int)numericUpDown7.Value - 1;
-            ind_matrix row_matrB = new ind_matrix();
-            int rowB = (int)numericUpDown5.Value - 1;
-            row_matrA.ind_matr = row_matrA.row_matr(A.mtr, rowA);
-            row_matrB.ind_matr = row_matrB.row_matr(B.mtr, rowB);
+            var rowMatrix = new ind_matrix();
+            var rowA = (int)numericUpDown7.Value - 1;
+            var rowMatrB = new ind_matrix();
+            var rowB = (int)numericUpDown5.Value - 1;
+            rowMatrix.ind_matr = rowMatrix.row_matr(A.mtr, rowA);
+            rowMatrB.ind_matr = rowMatrB.row_matr(B.mtr, rowB);
 
-            if (row_matrA == row_matrB) MessageBox.Show("Rows are equal");
-            else MessageBox.Show("Rows are different");
-
+            MessageBox.Show(rowMatrix == rowMatrB ? "Rows are equal" : "Rows are different");
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -265,10 +263,10 @@ namespace lab4
             //int indexA = A.mtr.GetLength(0);
 
 
-            int rowMatrixA = Convert.ToInt32(numericUpDown1.Value);
-            int rowMatrixB = Convert.ToInt32(numericUpDown2.Value);
-            int sum;
-            if ((rowMatrixA >= A.mtr.GetLength(0)) || (rowMatrixB >= B.mtr.GetLength(0)))
+            var rowMatrixA = Convert.ToInt32(numericUpDown1.Value);
+            var rowMatrixB = Convert.ToInt32(numericUpDown2.Value);
+            var sum = 0;
+            if (rowMatrixA >= A.mtr.GetLength(0) || rowMatrixB >= B.mtr.GetLength(0))
             {
                 MessageBox.Show("Title");
             }
